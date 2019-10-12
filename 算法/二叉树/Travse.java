@@ -49,6 +49,7 @@ public class Travse {
         }
     }
 
+    //后序遍历
     private static void postTravse(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack();
         stack.push(treeNode);
