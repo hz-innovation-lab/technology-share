@@ -14,15 +14,19 @@ public class Travse {
 
     public static void main(String[] args) {
         TreeNode treeNode = constructTreeNode();
+        //前序遍历
 //        preTravse(treeNode);
+        //中序遍历
 //        middleTravse(treeNode);
+        //后序遍历
 //        postTravse(treeNode);
 //
-        //bfs
+        //层序遍历 bfs 广度优先遍历
 //        floorTravse(treeNode);
-        //dfs
+        //dfs 深度优先遍历(其实和前序遍历一样)
         deepTravse(treeNode);
     }
+
     //中序遍历
     private static void middleTravse(TreeNode treeNode) {
         Stack<TreeNode> stack = new Stack();
