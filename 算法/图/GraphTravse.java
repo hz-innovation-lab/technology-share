@@ -1,5 +1,8 @@
 package 图;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
  * @author baiyundou
  * @date 18:47 2019/10/15
@@ -17,10 +20,13 @@ public class GraphTravse {
 
         createGraph();
 
-        dfs(0);
-        //0代表第一个点
+        bfs(0);
+
+//        dfs(0);
+        //0代表点1
     }
 
+    //深度优先遍历
     private static void dfs(int v) {
         //v是代表是从哪个节点开始遍历
         System.out.println(v + 1);
@@ -28,6 +34,24 @@ public class GraphTravse {
         for (int i = 0; i < 9; i++) {
             if (!travsed[i] && w[v][i] != Integer.MAX_VALUE) {
                 dfs(i);
+            }
+        }
+    }
+
+    //广度优先遍历
+    private static void bfs(int v) {
+        //v是代表是从哪个节点开始遍历
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.add(v);
+        while (queue.size() != 0) {
+            Integer poll = queue.poll();
+            travsed[poll] = true;
+            System.out.println(poll + 1);
+            for (int i = 0; i < 9; i++) {
+                if(!travsed[i] && w[poll][i] != Integer.MAX_VALUE){
+                    travsed[i] = true;
+                    queue.add(i);
+                }
             }
         }
     }
