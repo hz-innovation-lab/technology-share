@@ -72,6 +72,7 @@ public class MyAStar {
     }
 
     private double calGValue(Node current) {
+        //利用递归计算欧式距离
         Node pNode = current.getPNode();
         if (pNode.getX() == current.getX() || pNode.getY() == current.getY()) {
             return calHValue(current.getPNode()) + 10;
