@@ -2,6 +2,7 @@ package 图;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @author baiyundou
@@ -20,10 +21,44 @@ public class GraphTravse {
 
         createGraph();
 
-        bfs(0);
+//        bfs(0);
 
-//        dfs(0);
+        dfs(0);
         //0代表点1
+
+//        dfsStack(0);
+    }
+
+    private static void travseNode(int v){
+        //打印node
+        System.out.println(v + 1);
+        //标记已遍历
+        travsed[v] = true;
+    }
+    private static void dfsStack(int v) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(v);
+        travseNode(v);
+        while (stack.size() != 0) {
+            Integer peek = stack.peek();
+            boolean flag = false;
+            for (int i = 0; i < w.length; i++) {
+                if (w[peek][i] == 1) {
+                    //有边
+                    if (!travsed[i]) {
+                        //且节点未被遍历
+                        stack.push(i);
+                        travseNode(i);
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+            if (!flag) {
+                //所有连接的点均已被遍历，直接pop当前节点即可
+                stack.pop();
+            }
+        }
     }
 
     //深度优先遍历
@@ -48,7 +83,7 @@ public class GraphTravse {
             travsed[poll] = true;
             System.out.println(poll + 1);
             for (int i = 0; i < 9; i++) {
-                if(!travsed[i] && w[poll][i] != Integer.MAX_VALUE){
+                if (!travsed[i] && w[poll][i] != Integer.MAX_VALUE) {
                     travsed[i] = true;
                     queue.add(i);
                 }

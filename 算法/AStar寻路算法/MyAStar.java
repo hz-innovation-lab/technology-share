@@ -29,7 +29,9 @@ public class MyAStar {
         while (!opens.contains(endNode)) {
             Collections.sort(opens);
             Node node = opens.get(0);
+            //对当前最有价值的点的周围的点进行计算,延伸点
             open(node);
+            //关闭这个点
             close(node);
         }
         showPath();

@@ -8,6 +8,7 @@ import java.util.Stack;
 /**
  * @author baiyundou
  * @date 17:02 2019/10/11
+ * 遍历，序列化
  * @description
  */
 public class Travse {
