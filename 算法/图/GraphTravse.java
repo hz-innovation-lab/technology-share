@@ -31,7 +31,7 @@ public class GraphTravse {
 
     private static void travseNode(int v){
         //打印node
-        System.out.println(v + 1);
+        System.out.println(v);
         //标记已遍历
         travsed[v] = true;
     }
@@ -64,7 +64,7 @@ public class GraphTravse {
     //深度优先遍历
     private static void dfs(int v) {
         //v是代表是从哪个节点开始遍历
-        System.out.println(v + 1);
+        System.out.println(v);
         travsed[v] = true;
         for (int i = 0; i < 9; i++) {
             if (!travsed[i] && w[v][i] != Integer.MAX_VALUE) {
@@ -81,7 +81,7 @@ public class GraphTravse {
         while (queue.size() != 0) {
             Integer poll = queue.poll();
             travsed[poll] = true;
-            System.out.println(poll + 1);
+            System.out.println(poll);
             for (int i = 0; i < 9; i++) {
                 if (!travsed[i] && w[poll][i] != Integer.MAX_VALUE) {
                     travsed[i] = true;
@@ -105,35 +105,35 @@ public class GraphTravse {
         }
         //权重,全设置为1
         len = 9;
-        w[1 - 1][2 - 1] = 1;
-        w[1 - 1][3 - 1] = 1;
-        w[2 - 1][1 - 1] = 1;
-        w[2 - 1][4 - 1] = 1;
-        w[2 - 1][5 - 1] = 1;
-        w[2 - 1][8 - 1] = 1;
-        w[3 - 1][1 - 1] = 1;
-        w[3 - 1][5 - 1] = 1;
-        w[3 - 1][6 - 1] = 1;
-        w[4 - 1][2 - 1] = 1;
-        w[4 - 1][8 - 1] = 1;
-        w[4 - 1][9 - 1] = 1;
-        w[5 - 1][2 - 1] = 1;
-        w[5 - 1][3 - 1] = 1;
-        w[5 - 1][7 - 1] = 1;
-        w[5 - 1][9 - 1] = 1;
-        w[6 - 1][3 - 1] = 1;
-        w[6 - 1][7 - 1] = 1;
-        w[6 - 1][9 - 1] = 1;
-        w[7 - 1][5 - 1] = 1;
-        w[7 - 1][6 - 1] = 1;
-        w[7 - 1][9 - 1] = 1;
-        w[8 - 1][2 - 1] = 1;
-        w[8 - 1][4 - 1] = 1;
-        w[8 - 1][9 - 1] = 1;
-        w[9 - 1][4 - 1] = 1;
-        w[9 - 1][5 - 1] = 1;
-        w[9 - 1][6 - 1] = 1;
-        w[9 - 1][7 - 1] = 1;
-        w[9 - 1][8 - 1] = 1;
+        w[0][1] = 1;
+        w[0][2] = 1;
+        w[1][0] = 1;
+        w[1][3] = 1;
+        w[1][4] = 1;
+        w[1][7] = 1;
+        w[2][0] = 1;
+        w[2][4] = 1;
+        w[2][5] = 1;
+        w[3][1] = 1;
+        w[3][7] = 1;
+        w[3][8] = 1;
+        w[4][1] = 1;
+        w[4][2] = 1;
+        w[4][6] = 1;
+        w[4][8] = 1;
+        w[5][2] = 1;
+        w[5][6] = 1;
+        w[5][8] = 1;
+        w[6][4] = 1;
+        w[6][5] = 1;
+        w[6][8] = 1;
+        w[7][1] = 1;
+        w[7][3] = 1;
+        w[7][8] = 1;
+        w[8][3] = 1;
+        w[8][4] = 1;
+        w[8][5] = 1;
+        w[8][6] = 1;
+        w[8][7] = 1;
     }
 }
