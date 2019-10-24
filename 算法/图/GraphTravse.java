@@ -35,7 +35,27 @@ public class GraphTravse {
         //标记已遍历
         travsed[v] = true;
     }
+
     private static void dfsStack(int v) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(v);
+        while (stack.size() != 0) {
+            Integer pop = stack.pop();
+            if(!travsed[pop]){
+                System.out.println(pop+1);
+                travsed[pop] = true;
+                for (int i = w.length - 1; i>=0 ; i--) {
+                    if (w[pop][i] == 1) {
+                        //有边
+                        // 且节点未被遍历
+                        stack.push(i);
+                    }
+                }
+            }
+        }
+    }
+
+    private static void dfsStackEasy(int v) {
         Stack<Integer> stack = new Stack<>();
         stack.push(v);
         travseNode(v);
