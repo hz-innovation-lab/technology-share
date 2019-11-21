@@ -3,26 +3,31 @@ package com.dfire.share.正确中断线程;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class InterruptTest {
 
-    private static AtomicInteger ac = new AtomicInteger(0);
+    private static AtomicInteger ac = new AtomicInteger(1);
+
+    private static int i = 10000;
+
+    private static int j = 10000;
 
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> {
-            //需求，无限睡眠,每轮 睡眠10次,可以中断睡眠,在发出中断操作后睡满当前的10次之后中断任务(被中断的睡眠不算一次)
+            //需求，循环,每轮 操作10次,可以中断操作,在发出中断操作后操作完当前的10次之后中断任务(被中断的操作不算一次)
             while (!Thread.interrupted()) {
-                System.out.println("\n新的一轮睡眠开始");
+                System.out.println("\n新的一轮开始");
 //                wrong();
                 right();
-                ac.set(0);
+                ac.set(1);
             }
-            System.out.println("\n我被中断了");
+            log.info("\n我被中断了, i = {}, j = {}", i, j);
         });
         t1.start();
-        Thread t2 = new Thread(() -> {
-            t1.interrupt();
-        });
-        t2.start();
+        TimeUnit.SECONDS.sleep(1);
+        t1.interrupt();
     }
 
     //虚假的处理方式,无法中断,甚至造成程序BUG疯狂打印
@@ -30,7 +35,7 @@ public class InterruptTest {
         while (true) {
             try {
                 if (!sleep()) {
-                    //睡够一千次，跳出循环
+                    //操作10次，跳出循环
                     break;
                 }
             } catch (InterruptedException e) {
@@ -47,7 +52,7 @@ public class InterruptTest {
             while (true) {
                 try {
                     if (!sleep()) {
-                        //睡够10次，跳出循环
+                        //操作10次，跳出循环
                         break;
                     }
                 } catch (InterruptedException e) {
@@ -63,8 +68,10 @@ public class InterruptTest {
 
     public static boolean sleep() throws InterruptedException {
         System.out.print(" " + ac.get());
-        TimeUnit.MILLISECONDS.sleep(1L);
+        TimeUnit.MILLISECONDS.sleep(20L);
+        i--;
         if (ac.getAndIncrement() == 10) {
+            j += 10;
             return false;
         } else {
             return true;
