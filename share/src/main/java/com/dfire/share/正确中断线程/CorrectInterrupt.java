@@ -37,7 +37,7 @@ public class CorrectInterrupt {
         try {
             TimeUnit.SECONDS.sleep(1L);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            //ignore
         }
         thread.interrupt();
         try {

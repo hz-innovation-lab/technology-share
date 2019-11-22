@@ -16,7 +16,7 @@ public class InterruptTest {
 
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> {
-            //需求，循环,每轮 操作10次,可以中断操作,在发出中断操作后操作完当前的10次之后中断任务(被中断的操作不算一次)
+            //需求，循环,每轮 操作10次,可以中断操作,在发出中断操作后操作完当前的10次之后中断任务(sleep被中断的操作不算一次)
             while (!Thread.interrupted()) {
                 System.out.println("\n新的一轮开始");
 //                wrong();
