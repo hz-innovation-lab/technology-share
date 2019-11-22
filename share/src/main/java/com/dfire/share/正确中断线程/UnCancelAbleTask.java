@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author baiyundou
  * @date 11:09 2019/11/22
- * @description
+ * @description  相应阻塞但是不应立即取消的任务
  */
 public class UnCancelAbleTask {
 
