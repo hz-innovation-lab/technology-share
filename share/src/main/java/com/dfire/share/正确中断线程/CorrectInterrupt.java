@@ -21,16 +21,10 @@ public class CorrectInterrupt {
     }
 
     public static void test1() {
+
         Thread thread = new Thread(() -> {
             while (!Thread.interrupted()) {
-                i--;
-                try {
-                    //do sth
-                    TimeUnit.SECONDS.sleep(2L);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-                j++;
+                task();
             }
         });
         thread.start();
@@ -39,6 +33,8 @@ public class CorrectInterrupt {
         } catch (InterruptedException e) {
             //ignore
         }
+
+        //中断
         thread.interrupt();
         try {
             //等待线程执行完毕
@@ -46,7 +42,20 @@ public class CorrectInterrupt {
         } catch (InterruptedException e) {
             //ignore
         }
+
+
         log.info("i = {}, j = {}", i, j);
+    }
+
+    public static void task() {
+        i--;
+        try {
+            //do sth
+            TimeUnit.SECONDS.sleep(2L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        j++;
     }
 
 }

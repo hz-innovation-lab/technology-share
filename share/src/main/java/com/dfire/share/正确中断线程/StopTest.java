@@ -20,16 +20,17 @@ public class StopTest {
         test1();
     }
 
-    public static void test1(){
+    public static void test1() {
         Thread thread = new Thread(() -> {
-            i--;
-            try {
-                //do sth
-                TimeUnit.SECONDS.sleep(10L);
-            } catch (InterruptedException e) {
-                //ignored
+            synchronized (new Object()) {
+                //内部原子性操作
+                i--;
+                try {
+                    TimeUnit.SECONDS.sleep(10L);
+                } catch (InterruptedException e) {
+                }
+                j++;
             }
-            j++;
         });
         thread.start();
         try {
