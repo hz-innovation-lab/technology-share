@@ -6,4 +6,6 @@ public interface Programmer {
     @PrintA
     void code();
 
+    void dream();
+
 }

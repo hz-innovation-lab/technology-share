@@ -15,7 +15,7 @@ public class TimeWatcher {
     public static void printIfNotFirst() {
         if (lastMills.get() != null) {
             long temp = System.currentTimeMillis();
-            System.out.println("cost " + (temp - lastMills.get()) + "  mills");
+            System.out.println("method cost " + (temp - lastMills.get()) + "  mills");
             lastMills.set(temp);
         } else {
             lastMills.set(System.currentTimeMillis());

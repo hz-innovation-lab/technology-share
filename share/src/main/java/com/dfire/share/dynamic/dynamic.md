@@ -11,4 +11,10 @@
 
 代理从创建的时间来区分,可以分为静态代理和动态代理。
 ### 静态代理
- 
+静态代理为程序运行前就已经编译好了class文件
+### 动态代理
+程序运行中动态生成class文件为动态代理
+* jdk动态代理
+* cglib动态代理
+Enhancer创建一个被代理对象的子类并且拦截所有的方法调用（包括从Object中继承的toString和hashCode方法）。
+Enhancer不能够拦截final方法，例如Object.getClass()方法，这是由于Java final方法语义决定的。基于同样的道理，Enhancer也不能对fianl类进行代理操作。
