@@ -8,6 +8,7 @@ public class JavaCoder {
 
     public void work() {
         System.out.println("work using java");
+        code();
     }
 
 }

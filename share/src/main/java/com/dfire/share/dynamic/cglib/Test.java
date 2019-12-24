@@ -1,7 +1,5 @@
 package com.dfire.share.dynamic.cglib;
 
-
-
 import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 
@@ -19,6 +17,15 @@ public class Test {
         enhancer.setCallback(transactionInterceptor);
         JavaCoder javaCoder = (JavaCoder) enhancer.create();
         javaCoder.code();
+    }
+
+    private static void selfInvoke(){
+        TransactionInterceptor transactionInterceptor = new TransactionInterceptor();
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(JavaCoder.class);
+        enhancer.setCallback(transactionInterceptor);
+        JavaCoder javaCoder = (JavaCoder) enhancer.create();
+        javaCoder.work();
     }
 
 }
