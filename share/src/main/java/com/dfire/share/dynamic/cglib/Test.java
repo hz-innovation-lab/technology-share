@@ -8,6 +8,7 @@ public class Test {
     public static void main(String[] args) {
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, System.getProperty("user.dir"));
         test1();
+//        selfInvoke();
     }
 
     private static void test1(){
